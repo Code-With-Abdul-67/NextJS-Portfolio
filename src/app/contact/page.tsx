@@ -1,55 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaEnvelope } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeIn, slideInLeft, slideInRight } from '@/utils/animations'
 
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-type FormStatus = 'idle' | 'loading' | 'success' | 'error';
-
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: ''
-  })
-  const [status, setStatus] = useState<FormStatus>('idle')
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus('loading')
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (!response.ok) throw new Error('Failed to send message')
-      
-      setStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-    } catch {
-      setStatus('error')
-    }
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }))
-  }
-
   return (
     <div className="container max-w-7xl mx-auto py-12">
       <motion.h1 
@@ -88,37 +43,9 @@ export default function Contact() {
               <FaEnvelope className="h-6 w-6 text-primary" />
               <div>
                 <h3 className="font-semibold">Email</h3>
-                <a href="mailto:your.email@example.com" className="text-secondary hover:text-primary">
-                  your.email@example.com
+                <a href="mailto:codewithabdul67@gmail.com" className="text-secondary hover:text-primary">
+                  codewithabdul67@gmail.com
                 </a>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="flex items-center gap-4"
-              variants={fadeInUp}
-              whileHover={{ x: 10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <FaPhone className="h-6 w-6 text-primary" />
-              <div>
-                <h3 className="font-semibold">Phone</h3>
-                <a href="tel:+1234567890" className="text-secondary hover:text-primary">
-                  +1 (234) 567-890
-                </a>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="flex items-center gap-4"
-              variants={fadeInUp}
-              whileHover={{ x: 10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <FaMapMarkerAlt className="h-6 w-6 text-primary" />
-              <div>
-                <h3 className="font-semibold">Location</h3>
-                <p className="text-secondary">San Francisco, CA</p>
               </div>
             </motion.div>
           </motion.div>
@@ -130,12 +57,14 @@ export default function Contact() {
           {...slideInRight}
         >
           <motion.form 
-            onSubmit={handleSubmit} 
+            action="https://formsubmit.co/codewithabdul67@gmail.com" 
+            method="POST"
             className="space-y-6"
             variants={fadeIn}
             initial="initial"
             animate="animate"
           >
+
             <motion.div variants={fadeInUp}>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name
@@ -144,8 +73,6 @@ export default function Contact() {
                 type="text"
                 id="name"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
                 required
                 className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent"
               />
@@ -159,8 +86,6 @@ export default function Contact() {
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChange}
                 required
                 className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent"
               />
@@ -173,8 +98,6 @@ export default function Contact() {
               <textarea
                 id="message"
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
                 required
                 rows={4}
                 className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -183,36 +106,15 @@ export default function Contact() {
             
             <motion.button
               type="submit"
-              disabled={status === 'loading'}
               className="w-full btn btn-primary"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {status === 'loading' ? 'Sending...' : 'Send Message'}
+              Send Message
             </motion.button>
-            
-            {status === 'success' && (
-              <motion.p 
-                className="text-green-500 text-center"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                Message sent successfully!
-              </motion.p>
-            )}
-            
-            {status === 'error' && (
-              <motion.p 
-                className="text-red-500 text-center"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                Failed to send message. Please try again.
-              </motion.p>
-            )}
           </motion.form>
         </motion.div>
       </div>
     </div>
   )
-} 
+}

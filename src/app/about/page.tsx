@@ -27,9 +27,8 @@ export default function About() {
         {...fadeInUp}
       >
         <p className="text-lg text-secondary max-w-3xl mx-auto text-center">
-          I&apos;m a passionate Full Stack Developer with expertise in building modern web applications.
-          With a strong foundation in both frontend and backend technologies, I create seamless
-          user experiences and robust server-side solutions.
+          I&apos;m a passionate Front End Developer with expertise in building modern web applications.
+          I intend to find the best ways to learn new things day by day.
         </p>
       </motion.section>
 
@@ -59,9 +58,8 @@ export default function About() {
             <FaCode className="h-8 w-8 text-primary mb-4" />
             <h3 className="text-xl font-semibold mb-2">Frontend</h3>
             <ul className="text-secondary space-y-2">
-              <li>React / Next.js</li>
-              <li>TypeScript</li>
-              <li>Tailwind CSS</li>
+              <li>React JS / Next JS</li>
+              <li>Bootstrap</li>
               <li>HTML5 / CSS3</li>
             </ul>
           </motion.div>
@@ -72,12 +70,10 @@ export default function About() {
             {...cardHover}
           >
             <FaLaptopCode className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Backend</h3>
+            <h3 className="text-xl font-semibold mb-2">CyberSecurity</h3>
             <ul className="text-secondary space-y-2">
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>PostgreSQL</li>
-              <li>MongoDB</li>
+              <li>OSINT</li>
+              <li>Wifi Pentesting</li>
             </ul>
           </motion.div>
           
@@ -90,9 +86,8 @@ export default function About() {
             <h3 className="text-xl font-semibold mb-2">Tools & Others</h3>
             <ul className="text-secondary space-y-2">
               <li>Git / GitHub</li>
-              <li>Docker</li>
-              <li>AWS</li>
-              <li>CI/CD</li>
+              <li>Figma</li>
+              <li>Linux</li>
             </ul>
           </motion.div>
         </motion.div>
@@ -121,12 +116,11 @@ export default function About() {
             variants={fadeInUp}
             {...cardHoverSmall}
           >
-            <h3 className="text-xl font-semibold mb-2">Senior Full Stack Developer</h3>
-            <p className="text-primary mb-2">Company Name • 2020 - Present</p>
+            <h3 className="text-xl font-semibold mb-2">Front End Developer (From 2022 till Present)</h3>
+            <p className="text-primary mb-2">From SMIT in 2022</p>
             <ul className="text-secondary list-disc list-inside space-y-2">
-              <li>Led development of multiple web applications using React and Node.js</li>
-              <li>Implemented CI/CD pipelines reducing deployment time by 50%</li>
-              <li>Mentored junior developers and conducted code reviews</li>
+              <li>HTML5, CSS3, JS and Bootstrap</li>
+              <li>Git, GitHub</li>
             </ul>
           </motion.div>
           
@@ -135,12 +129,11 @@ export default function About() {
             variants={fadeInUp}
             {...cardHoverSmall}
           >
-            <h3 className="text-xl font-semibold mb-2">Full Stack Developer</h3>
-            <p className="text-primary mb-2">Previous Company • 2018 - 2020</p>
+            <h3 className="text-xl font-semibold mb-2">Enrolled in ACCPAi from Aptech (Backend Development in Progress)</h3>
+            <p className="text-primary mb-2">2023 till Present</p>
             <ul className="text-secondary list-disc list-inside space-y-2">
-              <li>Developed and maintained RESTful APIs</li>
-              <li>Built responsive user interfaces with modern JavaScript frameworks</li>
-              <li>Optimized database queries improving performance by 40%</li>
+              <li>Figma</li>
+              <li>PHP, My SQL, Laravel (still in progress)</li>
             </ul>
           </motion.div>
         </motion.div>
@@ -169,10 +162,22 @@ export default function About() {
             {...cardHoverSmall}
           >
             <h3 className="text-xl font-semibold mb-2">Bachelor of Science in Computer Science</h3>
-            <p className="text-primary mb-2">University Name • 2014 - 2018</p>
-            <p className="text-secondary">
-              Graduated with honors. Focused on software engineering and web development.
-            </p>
+            <p className="text-primary mb-2">Completed in 2020</p>
+          </motion.div>
+        </motion.div>
+                <motion.div 
+          className="max-w-3xl mx-auto"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.div 
+            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
+            variants={fadeInUp}
+            {...cardHoverSmall}
+          >
+            <h3 className="text-xl font-semibold mb-2">Bachelor of Science in Pre Engineering</h3>
+            <p className="text-primary mb-2">Completed in 2023</p>
           </motion.div>
         </motion.div>
       </motion.section>

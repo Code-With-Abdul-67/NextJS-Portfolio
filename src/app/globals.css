@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #007AFF;
-  --color-secondary: #6B7280;
-  --color-dark: #1F2937;
-  --color-light: #F9FAFB;
-  --color-text: #000000;
-  --color-bg: #ffffff;
+  --color-primary: #7C3AED;       /* Purple */
+  --color-secondary: #A78BFA;     /* Light purple accent */
+  --color-dark: #1E1B2E;          /* Dark purple background */
+  --color-light: #F9FAFB;         /* Light background */
+  --color-text: #000000;          /* Black for light mode */
+  --color-bg: #ffffff;            /* White background */
 
   --font-sans: 'Inter', sans-serif;
 
@@ -14,35 +14,67 @@
   --animation-slide-up: slideUp 0.5s ease-in-out;
 }
 
-
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* === Base Styles === */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
 
 a {
   transition: all 0.2s ease;
 }
 
+/* === Purple Accents for Projects & Blog === */
+.projects a,
+.blog a,
+.projects .section-title,
+.blog .section-title {
+  color: var(--color-primary);
+}
+
+.projects .btn-primary,
+.blog .btn-primary {
+  @apply bg-[color:var(--color-primary)] text-white hover:bg-[color:var(--color-primary)]/90;
+}
+
+/* === Components === */
 @layer components {
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .btn {
     @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
   }
-  
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-primary/90;
-  }
-  
+
   .btn-secondary {
-    @apply bg-secondary text-white hover:bg-secondary/90;
+    @apply bg-[color:var(--color-secondary)] text-white hover:bg-[color:var(--color-secondary)]/90;
   }
-  
+
   .section-title {
     @apply text-3xl font-bold mb-8 text-center;
   }
-} 
 
+  /* === Box with Hover Border === */
+  .box {
+    @apply rounded-md transition-all duration-200;
+  }
+
+  .box:hover {
+    border: 2px solid black;
+  }
+}
+
+/* === Animations === */
 @keyframes fadeIn {
   from {
     opacity: 0;
