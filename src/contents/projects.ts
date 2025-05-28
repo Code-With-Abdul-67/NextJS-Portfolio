@@ -31,15 +31,15 @@ export const projects: Project[] = [
         technologies: ['Bash'],
         githubLink: 'https://github.com/Code-With-Abdul-67/Net-Switch',
         image: '/projects/project-img4.png',
-      }
-      // {
-      //   title: 'Weather App',
-      //   description: 'A weather application that provides real-time weather updates.',
-      //   technologies: ['React', 'OpenWeatherMap API'],
-      //   githubLink: 'https://github.com',
-      //   demoLink: 'https://demo.com',
-      //   image: '/projects/weather-app.png',
-      // },
+      },
+      {
+        title: 'Next Weather',
+        description: 'A Next JS based weather application that provides real-time weather updates.',
+        technologies: ['Next JS', 'Tailwind CSS', 'OpenWeatherMap API'],
+        githubLink: 'https://github.com/Code-With-Abdul-67/Next-Weather-App',
+        demoLink: 'https://next-weather-sable.vercel.app/',
+        image: '/projects/project-img5.png',
+      },
       // {
       //   title: 'Chat Application',
       //   description: 'A real-time chat application using WebSocket technology.',
