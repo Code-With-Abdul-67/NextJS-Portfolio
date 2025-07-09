@@ -1,15 +1,29 @@
 'use client'
 
 import { FaDownload } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import {
+  fadeInUp,
+  fadeInDown,
+  fadeIn,
+  staggerContainer
+} from '@/utils/animations'
 
 export default function Resume() {
   return (
     <div className="container max-w-4xl mx-auto py-12">
-      <h1 className="text-4xl font-bold mb-6 text-center text-primary">
+      <motion.h1
+        className="text-4xl font-bold mb-6 text-center text-primary"
+        {...fadeInDown}
+      >
         Resume
-      </h1>
+      </motion.h1>
 
-      <div className="flex justify-center mb-6">
+      <motion.div
+        className="flex justify-center mb-6"
+        {...fadeInUp}
+        transition={{ delay: 0.2 }}
+      >
         <a
           href="/cv.pdf"
           download
@@ -18,15 +32,19 @@ export default function Resume() {
           <FaDownload />
           Download CV
         </a>
-      </div>
+      </motion.div>
 
-      <div className="rounded-lg shadow-md overflow-hidden border border-black/10 hover:border-black transition bg-white dark:bg-[#3b185f]/50">
+      <motion.div
+        className="rounded-lg shadow-md overflow-hidden border border-black/10 hover:border-black transition bg-white dark:bg-[#3b185f]/50"
+        {...fadeIn}
+        transition={{ delay: 0.4 }}
+      >
         <iframe
           src="/cv.pdf"
           className="w-full h-[80vh] rounded-md"
           title="CV PDF"
         />
-      </div>
+      </motion.div>
     </div>
   )
 }

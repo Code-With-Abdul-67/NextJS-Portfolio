@@ -15,7 +15,7 @@ export default function About() {
   return (
     <div className="container max-w-7xl mx-auto py-12">
       <motion.h1 
-        className="text-4xl font-bold mb-8 text-center"
+        className="text-4xl font-bold mb-6 text-center text-primary"
         {...fadeInDown}
       >
         About Me
@@ -117,7 +117,7 @@ export default function About() {
             {...cardHoverSmall}
           >
             <h3 className="text-xl font-semibold mb-2">Front End Developer (From 2022 till Present)</h3>
-            <p className="text-primary mb-2">From SMIT in 2022</p>
+
             <ul className="text-secondary list-disc list-inside space-y-2">
               <li>HTML5, CSS3, JS and Bootstrap</li>
               <li>Git, GitHub</li>
@@ -129,11 +129,10 @@ export default function About() {
             variants={fadeInUp}
             {...cardHoverSmall}
           >
-            <h3 className="text-xl font-semibold mb-2">Enrolled in ACCPAi from Aptech (Backend Development in Progress)</h3>
-            <p className="text-primary mb-2">2023 till Present</p>
+            <h3 className="text-xl font-semibold mb-2">Enrolled in ACCPAi from Aptech (2024 ~ 2025)</h3>
             <ul className="text-secondary list-disc list-inside space-y-2">
               <li>Figma</li>
-              <li>PHP, My SQL, Laravel (still in progress)</li>
+              <li>PHP, My SQL, Laravel</li>
             </ul>
           </motion.div>
         </motion.div>
