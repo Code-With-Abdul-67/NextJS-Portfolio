@@ -4,32 +4,40 @@ import { projects } from '@/contents/projects'
 import Image from 'next/image'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer, cardHoverSmall } from '@/utils/animations'
+import {
+  fadeInUp,
+  staggerContainer,
+  cardHoverSmall,
+} from '@/utils/animations'
 
 export default function Projects() {
   return (
-    <section className="py-20">
+    <motion.section
+      className="py-20"
+      variants={staggerContainer}
+      initial="initial"
+      animate="animate"
+    >
       <div className="container max-w-7xl mx-auto px-4">
-        <motion.h2 
+        <motion.h2
           className="text-4xl font-bold mb-6 text-center text-primary"
           {...fadeInUp}
         >
           Featured Projects
         </motion.h2>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           variants={staggerContainer}
-          initial="initial"
-          animate="animate"
         >
           {projects.map((project) => (
-            <motion.article
+            <motion.div
               key={project.title}
               className="bg-white dark:bg-dark/50 rounded-lg shadow-md p-6"
               variants={fadeInUp}
-              {...cardHoverSmall}
+              whileHover={cardHoverSmall.whileHover}
             >
+              {/* Image */}
               <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
                 <Image
                   src={project.image}
@@ -39,27 +47,19 @@ export default function Projects() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-              <motion.h3 
-                className="text-xl font-semibold mb-2"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+
+              {/* Title */}
+              <h3 className="text-xl font-semibold mb-2 text-primary">
                 {project.title}
-              </motion.h3>
-              <motion.p 
-                className="text-gray-600 dark:text-gray-300 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {project.description}
-              </motion.p>
-              <motion.div 
-                className="flex flex-wrap gap-2 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
+              </p>
+
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech) => (
                   <motion.span
                     key={tech}
@@ -70,13 +70,10 @@ export default function Projects() {
                     {tech}
                   </motion.span>
                 ))}
-              </motion.div>
-              <motion.div 
-                className="flex gap-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
+              </div>
+
+              {/* Links */}
+              <div className="flex gap-4">
                 <motion.a
                   href={project.githubLink}
                   target="_blank"
@@ -88,6 +85,7 @@ export default function Projects() {
                   <FaGithub className="h-5 w-5" />
                   <span>Code</span>
                 </motion.a>
+
                 <motion.a
                   href={project.demoLink}
                   target="_blank"
@@ -99,11 +97,11 @@ export default function Projects() {
                   <FaExternalLinkAlt className="h-5 w-5" />
                   <span>Live Demo</span>
                 </motion.a>
-              </motion.div>
-            </motion.article>
+              </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
-} 
+}

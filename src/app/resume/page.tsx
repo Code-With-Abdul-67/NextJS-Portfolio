@@ -6,12 +6,12 @@ import {
   fadeInUp,
   fadeInDown,
   fadeIn,
-  staggerContainer
 } from '@/utils/animations'
 
 export default function Resume() {
   return (
     <div className="container max-w-4xl mx-auto py-12">
+      {/* Heading */}
       <motion.h1
         className="text-4xl font-bold mb-6 text-center text-primary"
         {...fadeInDown}
@@ -19,6 +19,7 @@ export default function Resume() {
         Resume
       </motion.h1>
 
+      {/* Download Button */}
       <motion.div
         className="flex justify-center mb-6"
         {...fadeInUp}
@@ -34,6 +35,7 @@ export default function Resume() {
         </a>
       </motion.div>
 
+      {/* Embedded PDF Viewer */}
       <motion.div
         className="rounded-lg shadow-md overflow-hidden border border-black/10 hover:border-black transition bg-white dark:bg-[#3b185f]/50"
         {...fadeIn}
