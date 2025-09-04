@@ -25,7 +25,7 @@ export default function Footer() {
               <FaGithub className="h-6 w-6" />
             </a>
             <a
-              href="https://www.linkedin.com/in/abdul-baseer-88410531b/"
+              href="https://www.linkedin.com/in/muhammad-abdul-baseer-08421b25b/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-secondary hover:text-primary transition-colors"
