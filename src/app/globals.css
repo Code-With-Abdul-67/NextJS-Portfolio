@@ -1,12 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #7C3AED;       /* Purple */
-  --color-secondary: #A78BFA;     /* Light purple accent */
-  --color-dark: #1E1B2E;          /* Dark purple background */
-  --color-light: #F9FAFB;         /* Light background */
-  --color-text: #000000;          /* Black for light mode */
-  --color-bg: #ffffff;            /* White background */
+  --color-primary: #7C3AED;
+  /* Purple */
+  --color-secondary: #A78BFA;
+  /* Light purple accent */
+  --color-dark: #1E1B2E;
+  /* Dark purple background */
+  --color-light: #F9FAFB;
+  /* Light background */
+  --color-text: #000000;
+  /* Black for light mode */
+  --color-bg: #ffffff;
+  /* White background */
 
   --font-sans: 'Inter', sans-serif;
 
@@ -18,15 +24,19 @@
 
 /* === Base Styles === */
 body {
-  background-color: var(--color-bg);
+  /* Light Mode: Light Background to Soft Purple Tint */
+  background: linear-gradient(135deg, var(--color-light) 0%, #ede9fe 100%);
   color: var(--color-text);
   font-family: var(--font-sans);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
 }
 
 .dark body {
-  background-color: var(--color-dark);
-  color: var(--color-light);
+  /* Dark Mode: Dark Purple to Nearly Black */
+  background: linear-gradient(135deg, var(--color-dark) 0%, #0F0720 100%);
+  color: #F3E8FF;
+  /* Light Purple Text */
 }
 
 a {
@@ -79,6 +89,7 @@ a {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -89,6 +100,7 @@ a {
     transform: translateY(20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;

@@ -14,7 +14,6 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
 
   // Update theme
   const setTheme = (newTheme: Theme) => {
@@ -37,13 +36,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     setThemeState(initialTheme);
     document.documentElement.classList.toggle("dark", initialTheme === "dark");
-    setMounted(true);
   }, []);
 
   // Prevent flash of wrong theme
-  if (!mounted) {
-    return null;
-  }
+  // We still render children to support SSR/SEO
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
