@@ -21,17 +21,18 @@ export default function Navbar() {
   const menuItems = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
+    { href: '/services', label: 'Services' },
     { href: '/projects', label: 'Projects' },
     { href: '/contact', label: 'Contact' },
     { href: '/resume', label: 'Resume' }
   ];
 
   return (
-    <nav className="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-sm z-50">
+    <nav className="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-md z-50 border-b border-gray-100 dark:border-white/10">
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold text-primary">
-            Code-With-Abdul
+          <Link href="/" className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            Abdul Baseer
           </Link>
 
           {/* Desktop Menu */}
@@ -40,43 +41,42 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="hover:text-primary transition-colors"
+                className="hover:text-primary transition-colors font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
               >
                 {item.label}
               </Link>
             ))}
+
             {/* Theme Toggle Button - mounted check to prevent hydration mismatch */}
             <div className="w-9 h-9 flex items-center justify-center">
               {mounted && (
-                <motion.button
+                <button
                   onClick={toggleTheme}
-                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-300"
+                  aria-label="Toggle theme"
                 >
                   {theme === 'dark' ? (
                     <SunIcon className="h-5 w-5" />
                   ) : (
                     <MoonIcon className="h-5 w-5" />
                   )}
-                </motion.button>
+                </button>
               )}
             </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          <button
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-300"
             onClick={toggleMobileMenu}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
               <XMarkIcon className="h-6 w-6" />
             ) : (
               <Bars3Icon className="h-6 w-6" />
             )}
-          </motion.button>
+          </button>
         </div>
 
         {/* Mobile Menu */}
@@ -87,9 +87,9 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden"
+              className="md:hidden overflow-hidden bg-white/95 dark:bg-dark/95 backdrop-blur-xl border-t border-gray-100 dark:border-white/10 -mx-4 px-4"
             >
-              <div className="py-4 space-y-4">
+              <div className="py-4 space-y-2">
                 {menuItems.map((item, index) => (
                   <motion.div
                     key={item.href}
@@ -99,7 +99,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      className="block py-2 hover:text-primary transition-colors"
+                      className="block py-3 px-4 rounded-lg hover:bg-primary/5 hover:text-primary transition-colors font-medium text-gray-600 dark:text-gray-300"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -110,22 +110,23 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: menuItems.length * 0.1 }}
+                  className="pt-2 border-t border-gray-100 dark:border-white/10 mt-2"
                 >
                   <button
                     onClick={() => {
                       toggleTheme();
                       setIsMobileMenuOpen(false);
                     }}
-                    className="flex items-center py-2 hover:text-primary transition-colors"
+                    className="flex w-full items-center py-3 px-4 rounded-lg hover:bg-primary/5 hover:text-primary transition-colors font-medium text-gray-600 dark:text-gray-300"
                   >
                     {theme === 'dark' ? (
                       <>
-                        <SunIcon className="h-5 w-5 mr-2" />
+                        <SunIcon className="h-5 w-5 mr-3" />
                         Light Mode
                       </>
                     ) : (
                       <>
-                        <MoonIcon className="h-5 w-5 mr-2" />
+                        <MoonIcon className="h-5 w-5 mr-3" />
                         Dark Mode
                       </>
                     )}

@@ -25,7 +25,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Toggle theme
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
-    console.log(theme);
   };
 
   // Initialize theme
@@ -37,9 +36,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setThemeState(initialTheme);
     document.documentElement.classList.toggle("dark", initialTheme === "dark");
   }, []);
-
-  // Prevent flash of wrong theme
-  // We still render children to support SSR/SEO
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>

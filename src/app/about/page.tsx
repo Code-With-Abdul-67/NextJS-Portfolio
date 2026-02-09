@@ -1,167 +1,184 @@
 'use client'
 
-import { FaCode, FaLaptopCode, FaGraduationCap } from 'react-icons/fa'
+import { FaCode, FaLaptopCode, FaGraduationCap, FaBriefcase, FaUserGraduate } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import {
   fadeInUp,
   fadeInDown,
-  fadeIn,
   staggerContainer,
-  cardHover,
-  cardHoverSmall,
 } from '@/utils/animations'
 
 export default function About() {
+  const skillCategories = [
+    {
+      title: "Frontend",
+      icon: <FaCode className="h-8 w-8" />,
+      skills: ["React JS", "Bootstrap", "HTML5", "CSS3"]
+    },
+    {
+      title: "Backend",
+      icon: <FaCode className="h-8 w-8" />,
+      skills: ["Next JS", "PostgreSQL", "Tailwind CSS"]
+    },
+    {
+      title: "CyberSecurity",
+      icon: <FaLaptopCode className="h-8 w-8" />,
+      skills: ["OSINT", "Wifi Pentesting", "Network Security"]
+    },
+    {
+      title: "Tools & Others",
+      icon: <FaGraduationCap className="h-8 w-8" />,
+      skills: ["Git / GitHub", "Figma", "Linux", "VS Code"]
+    }
+  ]
+
+  const experience = [
+    {
+      title: "Front End Developer",
+      period: "2022 - Present",
+      description: ["HTML5, CSS3, JS and Bootstrap", "NEXT.JS", "Git, GitHub"]
+    },
+    {
+      title: "Backend Developer",
+      period: "2025 - Present",
+      description: ["NEXT.JS", "PostgreSQL", "Tailwind CSS"]
+    },
+    {
+      title: "Enrolled in ACCPAi from Aptech",
+      period: "2024 - 2025",
+      description: ["UI/UX Design with Figma", "Full-stack with PHP, MySQL, Laravel"]
+    }
+  ]
+
+  const education = [
+    {
+      degree: "Bachelor of Science in Computer Science",
+      year: "2020",
+      icon: <FaUserGraduate className="h-5 w-5" />
+    },
+    {
+      degree: "Bachelor of Science in Pre Engineering",
+      year: "2023",
+      icon: <FaGraduationCap className="h-5 w-5" />
+    }
+  ]
+
   return (
-    <motion.div
-      className="container max-w-7xl mx-auto py-12"
-      variants={staggerContainer}
-      initial="initial"
-      animate="animate"
-    >
+    <div className="container max-w-7xl mx-auto py-20 px-4 relative overflow-hidden">
+
       {/* Heading */}
-      <motion.h1
-        className="text-4xl font-bold mb-6 text-center text-primary"
-        {...fadeInDown}
-      >
-        About Me
-      </motion.h1>
-
-      {/* Bio */}
-      <motion.section className="mb-16" {...fadeInUp}>
-        <p className="text-lg text-secondary max-w-3xl mx-auto text-center">
-          I&apos;m a passionate Front End Developer with expertise in building modern web applications.
-          I intend to find the best ways to learn new things day by day.
+      <motion.div className="text-center mb-20" {...fadeInDown}>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent inline-block">
+          About Me
+        </h1>
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          I&apos;m a passionate <span className="text-primary font-semibold">Front End Developer</span> with expertise in building modern, responsive, and user-centric web applications. I strive for excellence and love learning new technologies.
         </p>
+      </motion.div>
+
+      {/* Skills Section */}
+      <motion.section
+        className="mb-24"
+        variants={staggerContainer}
+        initial="initial"
+        animate="animate"
+      >
+        <div className="flex items-center gap-4 mb-10">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gray-200 dark:to-white/10" />
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Skills & Expertise</h2>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gray-200 dark:to-white/10" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+          {skillCategories.map((category, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-white/50 dark:bg-[#0F0F0F]/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-100 dark:border-white/5 shadow-lg hover:shadow-primary/10 transition-all group"
+              variants={fadeInUp}
+              whileHover={{ y: -5 }}
+            >
+              <div className="p-3 rounded-xl bg-primary/10 text-primary w-fit mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                {category.icon}
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">{category.title}</h3>
+              <ul className="space-y-3">
+                {category.skills.map((skill, sIdx) => (
+                  <li key={sIdx} className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
       </motion.section>
 
-      {/* Skills */}
-      <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.2 }}>
-        <motion.h2 className="section-title" {...fadeInUp}>
-          Skills
-        </motion.h2>
-        <motion.div
-          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        {/* Experience Section */}
+        <motion.section
           variants={staggerContainer}
+          initial="initial"
+          animate="animate"
         >
-          {/* Frontend */}
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            whileHover={cardHover.whileHover}
-          >
-            <FaCode className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Frontend</h3>
-            <ul className="text-secondary space-y-2">
-              <li>React JS / Next JS</li>
-              <li>Bootstrap</li>
-              <li>HTML5 / CSS3</li>
-            </ul>
-          </motion.div>
+          <div className="flex items-center gap-4 mb-10">
+            <FaBriefcase className="text-primary h-6 w-6" />
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100">My Experience</h2>
+          </div>
 
-          {/* Cybersecurity */}
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            whileHover={cardHover.whileHover}
-          >
-            <FaLaptopCode className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">CyberSecurity</h3>
-            <ul className="text-secondary space-y-2">
-              <li>OSINT</li>
-              <li>Wifi Pentesting</li>
-            </ul>
-          </motion.div>
+          <div className="space-y-8">
+            {experience.map((exp, idx) => (
+              <motion.div
+                key={idx}
+                className="relative pl-8 border-l-2 border-primary/30"
+                variants={fadeInUp}
+              >
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-[#0F0720]" />
+                <div className="bg-white/50 dark:bg-white/5 p-6 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm">
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{exp.title}</h3>
+                  <span className="text-primary font-semibold text-sm mb-4 block">{exp.period}</span>
+                  <ul className="space-y-2">
+                    {exp.description.map((item, iIdx) => (
+                      <li key={iIdx} className="text-gray-600 dark:text-gray-400 text-sm">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
 
-          {/* Tools */}
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            whileHover={cardHover.whileHover}
-          >
-            <FaGraduationCap className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Tools & Others</h3>
-            <ul className="text-secondary space-y-2">
-              <li>Git / GitHub</li>
-              <li>Figma</li>
-              <li>Linux</li>
-            </ul>
-          </motion.div>
-        </motion.div>
-      </motion.section>
-
-      {/* Experience */}
-      <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.4 }}>
-        <motion.h2 className="section-title" {...fadeInUp}>
-          Experience
-        </motion.h2>
-        <motion.div
-          className="max-w-3xl mx-auto space-y-8"
+        {/* Education Section */}
+        <motion.section
           variants={staggerContainer}
+          initial="initial"
+          animate="animate"
         >
-          {/* Experience Card 1 */}
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            whileHover={cardHoverSmall.whileHover}
-          >
-            <h3 className="text-xl font-semibold mb-2">
-              Front End Developer (From 2022 till Present)
-            </h3>
-            <ul className="text-secondary list-disc list-inside space-y-2">
-              <li>HTML5, CSS3, JS and Bootstrap</li>
-              <li>Git, GitHub</li>
-            </ul>
-          </motion.div>
+          <div className="flex items-center gap-4 mb-10">
+            <FaLaptopCode className="text-primary h-6 w-6" />
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100">My Education</h2>
+          </div>
 
-          {/* Experience Card 2 */}
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            whileHover={cardHoverSmall.whileHover}
-          >
-            <h3 className="text-xl font-semibold mb-2">
-              Enrolled in ACCPAi from Aptech (2024 ~ 2025)
-            </h3>
-            <ul className="text-secondary list-disc list-inside space-y-2">
-              <li>Figma</li>
-              <li>PHP, My SQL, Laravel</li>
-            </ul>
-          </motion.div>
-        </motion.div>
-      </motion.section>
-
-      {/* Education */}
-      <motion.section {...fadeIn} transition={{ delay: 0.6 }}>
-        <motion.h2 className="section-title" {...fadeInUp}>
-          Education
-        </motion.h2>
-
-        {/* CS Degree */}
-        <motion.div
-          className="max-w-3xl mx-auto"
-          variants={staggerContainer}
-        >
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md mb-6"
-            variants={fadeInUp}
-            whileHover={cardHoverSmall.whileHover}
-          >
-            <h3 className="text-xl font-semibold mb-2">Bachelor of Science in Computer Science</h3>
-            <p className="text-primary mb-2">Completed in 2020</p>
-          </motion.div>
-
-          {/* Pre-Engineering */}
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            whileHover={cardHoverSmall.whileHover}
-          >
-            <h3 className="text-xl font-semibold mb-2">Bachelor of Science in Pre Engineering</h3>
-            <p className="text-primary mb-2">Completed in 2023</p>
-          </motion.div>
-        </motion.div>
-      </motion.section>
-    </motion.div>
+          <div className="space-y-6">
+            {education.map((edu, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-white/50 dark:bg-white/5 p-6 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm flex items-start gap-4"
+                variants={fadeInUp}
+                whileHover={{ x: 10 }}
+              >
+                <div className="p-3 rounded-xl bg-secondary/10 text-secondary">
+                  {edu.icon}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{edu.degree}</h3>
+                  <p className="text-primary font-semibold text-sm">Graduated in {edu.year}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+      </div>
+    </div>
   )
 }
